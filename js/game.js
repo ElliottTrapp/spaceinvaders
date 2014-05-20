@@ -75,9 +75,9 @@ Alien.prototype.step = function(dt) {
   }
   return true;
 }
-
+//This is the firing rate for the Alien - Random Number * 100 =< 10 will fire.
 Alien.prototype.fireSometimes = function() {
-      if(Math.random()*100 < 10) {
+      if(Math.random()*100 < 100) {
         this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
                                       this.y + this.h, 
                                      { dy: 100 });
