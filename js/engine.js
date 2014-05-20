@@ -82,6 +82,7 @@ var GameBoard = function GameBoard(level_number) {
     return sprite;
   };
   
+  //This is a comment so I can practice commit!
 
   this.iterate = function(func) {
      for(var i=0,len=this.objects.length;i<len;i++) {
