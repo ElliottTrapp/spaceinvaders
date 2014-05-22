@@ -23,12 +23,14 @@
           [0,0,1,1,1,1,1,1,1,1,0],
           [0,0,1,1,1,1,1,1,1,1,0]] };
 
-//Where my sprites are on my sprite sheet - New Alien 1 = sy=41 w=23 h=15
+//This is the positioning of the elements in the game
 
   var spriteData = {
     'alien1': { sx: 0,  sy: 0,  w: 30, h: 31, cls: Alien, frames: 2 },
    // 'alien2': { sx: 0,  sy: 22, w: 23, h: 18, cls: Alien, frames: 0 },
+  
     'player': { sx: 0,  sy: 36, w: 26, h: 28, cls: Player },
+
     'missile': { sx: 0,  sy: 61, w: 8,  h: 20 , cls: Missile }
   }
 
@@ -58,8 +60,9 @@
     Game.loadBoard(screen);
   }
 
+//This is the function that controls the sounds for firing and kills
   $(function() {
-    GameAudio.load({ 'fire' : 'media/laser.ogg', 'die' : 'media/explosion.ogg' }, 
+    GameAudio.load({ 'fire' : 'media/laser.wav', 'die' : 'media/explosion.wav' }, 
                    function() { 
                        Game.initialize("#gameboard", levelData, spriteData,
                                       { "start": startGame,
