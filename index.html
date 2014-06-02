@@ -10,16 +10,50 @@
 
   <style>
      
-     /* This is my background image for the game */ 
-     
-#gameboard { background-image:url(images/game-background.png); }
-      #game-wrapper { margin:0 auto; width: 500px; }
-  </style>
-</head>
-<body>
-  <div id='game-wrapper'>
 
-    <canvas id='gameboard' width='500' height='500'></canvas>
-  </div>
-</body>
+    body {
+        background: #8fc800; /* Old browsers */
+    background: -moz-linear-gradient(top, #8fc800 0%, #46af00 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#8fc800), color-stop(100%,#46af00)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #8fc800 0%,#46af00 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #8fc800 0%,#46af00 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #8fc800 0%,#46af00 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #8fc800 0%,#46af00 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8fc800', endColorstr='#46af00',GradientType=0 ); /* IE6-9 */
+
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+    }
+         /* This is my background image for the game */ 
+        
+        /* 
+
+        IMG.displayed {
+        display: block;
+        margin-left: auto;
+        margin-right: auto }
+
+           <IMG class="displayed" src="images/game-boy.png" alt="...">
+
+        */
+
+/* MADE THE ACTUAL GAMEBOARD RELATIVE TO WRAPPER SO IT AUTO CENTERS CORRECTLY REGARDLESS OF SCREEN RESIZE - PLACED IN CENTER OF GAMEBOY THROUGH MOVING PIXELS*/
+
+    #gameboard { background-image:url(images/game-background.png); position: relative; top: 160px; left: 265px;}
+
+/* ADDED GAMEBOY WRAP AROUND THE GAME - LINK TO THE ORIGIN OF THE GAME SPRITES */
+/* MADE THE WRAPPER AUTO CENTERED*/
+
+     #game-wrapper {display: block; margin-left: auto; margin-right: auto; width: 1000px; height: 890px; background-image:url(images/game-boy.png); background-repeat: no-repeat;}
+
+  </style>
+
+</head>
+
+  <body>
+    <div id='game-wrapper'>
+   
+      <canvas id='gameboard' width='500' height='500'></canvas>
+    </div>
+  </body>
 </html>
