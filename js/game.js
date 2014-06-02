@@ -76,6 +76,7 @@ Alien.prototype.step = function(dt) {
   return true;
 }
 //This is the firing rate for the Alien - Random Number * 100 =< 10 will fire.
+//Maybe can change 'missle' to 'missle2' and add new sprite to change their projectile.
 Alien.prototype.fireSometimes = function() {
       if(Math.random()*100 < 0) {
         this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
