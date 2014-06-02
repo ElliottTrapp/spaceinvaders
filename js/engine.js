@@ -1,4 +1,5 @@
-var Game = new function() {                                                                  
+var Game = new function() {    
+// These are the codes for what key needs to be pressed - can add more for forward etc or change the codes.                                                              
   var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' };
   this.keys = {};
 
@@ -32,6 +33,7 @@ var Game = new function() {
 
 var Sprites = new function() {
   this.map = { }; 
+//Calling the sprite image from sheet
 
   this.load = function(sprite_data,callback) { 
     this.map = sprite_data;
@@ -46,17 +48,17 @@ var Sprites = new function() {
     canvas.drawImage(this.image, s.sx + frame * s.w, s.sy, s.w, s.h, x,y, s.w, s.h);
   };
 }
-
+//If fire key pressed (callback?) (start game?)
 var GameScreen = function GameScreen(text,text2,callback) {
   this.step = function(dt) {
     if(Game.keys['fire'] && callback) callback();
   };
-
+//Change the font/colour etc for text
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
     canvas.font = "bold 40px arial";
     var measure = canvas.measureText(text);  
-    canvas.fillStyle = "#FFFFFF";
+    canvas.fillStyle = "#2e6ae4";
     canvas.fillText(text,Game.width/2 - measure.width/2,Game.height/2);
     canvas.font = "bold 20px arial";
     var measure2 = canvas.measureText(text2);

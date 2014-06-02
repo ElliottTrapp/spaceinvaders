@@ -79,7 +79,7 @@ Alien.prototype.step = function(dt) {
 //Maybe can change 'missle' to 'missle2' and add new sprite to change their projectile.
 Alien.prototype.fireSometimes = function() {
       if(Math.random()*100 < 0) {
-        this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
+        this.board.addSprite('missile2',this.x + this.w/2 - Sprites.map.missile.w/2,
                                       this.y + this.h, 
                                      { dy: 100 });
       }
@@ -107,7 +107,7 @@ Player.prototype.step = function(dt) {
   if(this.x > Game.width-this.w) this.x = Game.width-this.w;
 
   this.reloading--;
-
+// Here you can change the amount of missiles on the board - before requring a reload (waiting for the missiles to reach end of canvas)
   if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 3) {
     GameAudio.play('fire');
     this.board.addSprite('missile',
@@ -132,7 +132,8 @@ Missile.prototype.draw = function(canvas) {
 
 Missile.prototype.step = function(dt) {
    this.y += this.dy * dt;
-
+   
+//If enemy missile collides with player - player dies and game ends
    var enemy = this.board.collide(this);
    if(enemy) { 
      enemy.die();

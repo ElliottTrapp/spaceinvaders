@@ -35,9 +35,9 @@
 
     'missile': { sx: 0,  sy: 67, w: 7,  h: 15, cls: Missile },
 
-    //Added missile 2 for the enemy projectile
+    //Added missile 2 for the enemy projectile (keep class the same)
 
-  //  'missile2': { sx: 0,  sy: 61, w: 8,  h: 20 , cls: Missile2 }
+  //  'missile2': { sx: 0,  sy: 61, w: 8,  h: 20 , cls: Missile }
   }
 
   function startGame() {
