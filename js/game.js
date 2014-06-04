@@ -54,10 +54,18 @@ Alien.prototype.draw = function(canvas) {
   Sprites.draw(canvas,this.name,this.x,this.y,this.frame);
 }
 
+// Alien.prototype.die = function() {
+//   GameAudio.play('die');
+//   this.flock.speed += 1;
+//   this.board.remove(this);
+// }
+
+//Addition of .score
 Alien.prototype.die = function() {
   GameAudio.play('die');
   this.flock.speed += 1;
   this.board.remove(this);
+  this.board.score++;
 }
 
 Alien.prototype.step = function(dt) {
@@ -78,8 +86,8 @@ Alien.prototype.step = function(dt) {
 //This is the firing rate for the Alien - Random Number * 100 =< 10 will fire.
 //Maybe can change 'missle' to 'missle2' and add new sprite to change their projectile.
 Alien.prototype.fireSometimes = function() {
-      if(Math.random()*100 < 0) {
-        this.board.addSprite('missile2',this.x + this.w/2 - Sprites.map.missile.w/2,
+      if(Math.random()*100 < 5) {
+        this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
                                       this.y + this.h, 
                                      { dy: 100 });
       }
@@ -98,6 +106,7 @@ Player.prototype.die = function() {
   GameAudio.play('die');
   Game.callbacks['die']();
 }
+//Change speed of player?
 
 Player.prototype.step = function(dt) {
   if(Game.keys['left']) { this.x -= 100 * dt; }
@@ -106,8 +115,9 @@ Player.prototype.step = function(dt) {
   if(this.x < 0) this.x = 0;
   if(this.x > Game.width-this.w) this.x = Game.width-this.w;
 
-  this.reloading--;
 // Here you can change the amount of missiles on the board - before requring a reload (waiting for the missiles to reach end of canvas)
+
+  this.reloading--;
   if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 3) {
     GameAudio.play('fire');
     this.board.addSprite('missile',
@@ -126,13 +136,19 @@ var Missile = function Missile(opts) {
    this.player = opts.player;
 }
 
+//If I change between missile and missile 2 - the sprite will now change for both the player and alien
+
 Missile.prototype.draw = function(canvas) {
-   Sprites.draw(canvas,'missile',this.x,this.y);
+   Sprites.draw(canvas,'missile2', this.x,this.y);
 }
+
+//Missile.prototype.draw = function(canvas) {
+//   Sprites.draw(canvas,'missile2',this.x,this.y);
+//}
 
 Missile.prototype.step = function(dt) {
    this.y += this.dy * dt;
-   
+
 //If enemy missile collides with player - player dies and game ends
    var enemy = this.board.collide(this);
    if(enemy) { 
@@ -147,3 +163,31 @@ Missile.prototype.die = function() {
   if(this.board.missiles < 0) this.board.missiles=0;
    this.board.remove(this);
 }
+
+
+
+//zak
+
+
+var BossAlien = function BossAlien (opts) 
+
+{ this.dx = opts.dx; 
+ this.frame = 0;
+ this.player= opts.player; }
+
+BossAlien.prototype.draw = function(canvas) 
+{ Sprites.draw(canvas, 'triforce', this.x, this.y, this.frame);}
+
+BossAlien.prototype.step = function(dt)
+{ this.x += this.dx;
+ this.frame = (this.frame+1) % 2; 
+ return true; } 
+
+BossAlien.prototype.die = function() {
+    GameAudio.play('');
+    this.board.remove(this);
+    this.player.frame=1;
+    
+    
+    
+}         

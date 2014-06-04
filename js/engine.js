@@ -58,7 +58,7 @@ var GameScreen = function GameScreen(text,text2,callback) {
     canvas.clearRect(0,0,Game.width,Game.height);
     canvas.font = "bold 40px arial";
     var measure = canvas.measureText(text);  
-    canvas.fillStyle = "#2e6ae4";
+    canvas.fillStyle = "#797777";
     canvas.fillText(text,Game.width/2 - measure.width/2,Game.height/2);
     canvas.font = "bold 20px arial";
     var measure2 = canvas.measureText(text2);
@@ -66,8 +66,11 @@ var GameScreen = function GameScreen(text,text2,callback) {
   };
 };
 
+
+
 var GameBoard = function GameBoard(level_number) {
   this.removed_objs = [];
+  this.score = 0;
   this.missiles = 0;
   this.level = level_number;
   var board = this;
@@ -99,6 +102,9 @@ var GameBoard = function GameBoard(level_number) {
     return false;
   };
 
+
+
+ 
   this.step = function(dt) { 
     this.removed_objs = [];
     this.iterate(function() { 
@@ -115,6 +121,7 @@ var GameBoard = function GameBoard(level_number) {
     canvas.clearRect(0,0,Game.width,Game.height);
     this.iterate(function() { this.draw(canvas); });
   };
+
 
   this.collision = function(o1,o2) {
     return !((o1.y+o1.h-1<o2.y) || (o1.y>o2.y+o2.h-1) ||
@@ -154,6 +161,11 @@ var GameBoard = function GameBoard(level_number) {
  
   this.loadLevel(Game.level_data[level_number]);
 };
+
+
+
+
+
 
 var GameAudio = new function() {
   this.load_queue = [];
@@ -203,3 +215,43 @@ var GameAudio = new function() {
   };
 };
 
+
+///Help from Zak///
+
+   this.step = function(dt) { 
+    
+      if(this.BossAlien<1 && Math.random()*1000<1) {
+        var BossAlien=this.addSprite('alien4' , Game.width, 10, { dx: -1, player: this.player });
+        ++this.BossAlien;  }  
+
+
+      //Score Font Settings + Coords
+
+    var scoretext = "Score: " + this.score;
+    canvas.font="20px arial";
+    canvas.fillStyle = "#797777";
+    //canvas.fillText(scoretext,10,10);
+    var measure2 = canvas.measureText(text2);
+    canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
+  
+  };
+
+
+// var GameBoard = function GameBoard(level_number) {
+//   this.score = 0;
+//   this.removed_objs = [];
+//   this.missiles = 0;
+//   this.level = level_number;
+//   var board = this;
+
+//   this.add =    function(obj) { obj.board=this; this.objects.push(obj); return obj; };
+//   this.remove = function(obj) { this.removed_objs.push(obj); };
+
+//   this.addSprite = function(name,x,y,opts) {
+//     var sprite = this.add(new Sprites.map[name].cls(opts));
+//     sprite.name = name;
+//     sprite.x = x; sprite.y = y;
+//     sprite.w = Sprites.map[name].w; 
+//     sprite.h = Sprites.map[name].h;
+//     return sprite;
+//   };

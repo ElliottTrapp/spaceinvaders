@@ -38,6 +38,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d6d6d', end
 
         */
 
+
+    #game-wrapper #score {
+   color: grey;
+   position: relative;
+   font-family: sans-serif;
+   top: 160px; left: 265px;
+ }
+
 /* MADE THE ACTUAL GAMEBOARD RELATIVE TO WRAPPER SO IT AUTO CENTERS CORRECTLY REGARDLESS OF SCREEN RESIZE - PLACED IN CENTER OF GAMEBOY THROUGH MOVING PIXELS*/
 
     #gameboard { background-image:url(images/game-background.png); position: relative; top: 160px; left: 265px;}
@@ -55,6 +63,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d6d6d', end
     <div id='game-wrapper'>
    
       <canvas id='gameboard' width='500' height='500'></canvas>
+      <p id="score"> SCORE : 0</p>
     </div>
   </body>
 </html>
