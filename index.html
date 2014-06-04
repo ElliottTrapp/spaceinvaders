@@ -12,32 +12,27 @@
      
 
     body {
-background: rgb(109,109,109); /* Old browsers */
-background: -moz-linear-gradient(top,  rgba(109,109,109,1) 0%, rgba(66,66,66,1) 88%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(109,109,109,1)), color-stop(88%,rgba(66,66,66,1))); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  rgba(109,109,109,1) 0%,rgba(66,66,66,1) 88%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  rgba(109,109,109,1) 0%,rgba(66,66,66,1) 88%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  rgba(109,109,109,1) 0%,rgba(66,66,66,1) 88%); /* IE10+ */
-background: linear-gradient(to bottom,  rgba(109,109,109,1) 0%,rgba(66,66,66,1) 88%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d6d6d', endColorstr='#424242',GradientType=0 ); /* IE6-9 */
+
+      /* All of this block is for the background gradient to work on all browsers */
+
+            background: rgb(109,109,109); /* Old browsers */
+            background: -moz-linear-gradient(top,  rgba(109,109,109,1) 0%, rgba(66,66,66,1) 88%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(109,109,109,1)), color-stop(88%,rgba(66,66,66,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba(109,109,109,1) 0%,rgba(66,66,66,1) 88%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba(109,109,109,1) 0%,rgba(66,66,66,1) 88%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba(109,109,109,1) 0%,rgba(66,66,66,1) 88%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba(109,109,109,1) 0%,rgba(66,66,66,1) 88%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6d6d6d', endColorstr='#424242',GradientType=0 ); /* IE6-9 */
 
 
-     background-repeat: no-repeat;
-     background-attachment: fixed;
+                 background-repeat: no-repeat;
+                 background-attachment: fixed;
     }
          /* This is my background image for the game */ 
         
-        /* 
+        
 
-        IMG.displayed {
-        display: block;
-        margin-left: auto;
-        margin-right: auto }
-
-           <IMG class="displayed" src="images/game-boy.png" alt="...">
-
-        */
-
+/* This is the container for my score */
 
     #game-wrapper #score {
    color: grey;

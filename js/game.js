@@ -63,7 +63,7 @@ Alien.prototype.die = function() {
   this.board.remove(this); 
         // This functions defines that the alien is then removed upon collision 
     score = score +1;
-        // Adds 10 to the score
+        // Adds 1 to the score
     document.getElementById('score').innerHTML="  : " + score;
                         
 }
@@ -106,11 +106,11 @@ Player.prototype.die = function() {
   GameAudio.play('die');
   Game.callbacks['die']();
 }
-//Change speed of player?
+//Change speed of player
 
 Player.prototype.step = function(dt) {
-  if(Game.keys['left']) { this.x -= 100 * dt; }
-  if(Game.keys['right']) { this.x += 100 * dt; }
+  if(Game.keys['left']) { this.x -= 115 * dt; }
+  if(Game.keys['right']) { this.x += 115 * dt; }
 
   if(this.x < 0) this.x = 0;
   if(this.x > Game.width-this.w) this.x = Game.width-this.w;
@@ -118,7 +118,7 @@ Player.prototype.step = function(dt) {
 // Here you can change the amount of missiles on the board - before requring a reload (waiting for the missiles to reach end of canvas)
 
   this.reloading--;
-  if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 3) {
+  if(Game.keys['fire'] && this.reloading <= 0 && this.board.missiles < 4) {
     GameAudio.play('fire');
     this.board.addSprite('missile',
                           this.x + this.w/2 - Sprites.map.missile.w/2,

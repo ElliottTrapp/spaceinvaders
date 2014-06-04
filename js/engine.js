@@ -22,10 +22,17 @@ var Game = new function() {
     Sprites.load(sprite_data,this.callbacks['start']);
   };
 
+
+//Starts the game loop
+
   this.loadBoard = function(board) { Game.board = board; };
 
   this.loop = function() { 
+
+    //Master speed control of game - Higher faster
+
     Game.board.step(30/1000); 
+
     Game.board.render(Game.canvas);
     setTimeout(Game.loop,30);
   };
@@ -33,6 +40,7 @@ var Game = new function() {
 
 var Sprites = new function() {
   this.map = { }; 
+
 //Calling the sprite image from sheet
 
   this.load = function(sprite_data,callback) { 
@@ -48,12 +56,15 @@ var Sprites = new function() {
     canvas.drawImage(this.image, s.sx + frame * s.w, s.sy, s.w, s.h, x,y, s.w, s.h);
   };
 }
-//If fire key pressed (callback?) (start game?)
+//If fire key pressed Starts Game
+
 var GameScreen = function GameScreen(text,text2,callback) {
   this.step = function(dt) {
     if(Game.keys['fire'] && callback) callback();
   };
-//Change the font/colour etc for text
+
+//Change the font/colour etc for text styling
+
   this.render = function(canvas) {
     canvas.clearRect(0,0,Game.width,Game.height);
     canvas.font = "bold 40px arial";
@@ -72,6 +83,7 @@ var GameBoard = function GameBoard(level_number) {
   this.score = 0;
   this.removed_objs = [];
   this.missiles = 0;
+  this.BossAlien = 0; 
   this.level = level_number;
   var board = this;
 
@@ -89,11 +101,6 @@ var GameBoard = function GameBoard(level_number) {
 
 
 
-// var scoretext = "Score: " + this.score;
-//     canvas.font="20px arial";
-//     canvas.fillStyle = "#797777";
-//     canvas.fillText(scoretext,10,10);
-//     var measure2 = canvas.measureText(text2);
 
   
 
@@ -114,6 +121,7 @@ var GameBoard = function GameBoard(level_number) {
   };
 
 
+//Randomly Spawning Bonus 'Alien' At top of screen 'Triforce'
 
  
   this.step = function(dt) { 
@@ -228,12 +236,6 @@ var GameAudio = new function() {
 
 
 ///Help from Zak///
-
-   this.step = function(dt) { 
-    
-      if(this.BossAlien<1 && Math.random()*1000<1) {
-        var BossAlien=this.addSprite('alien4' , Game.width, 10, { dx: -1, player: this.player });
-        ++this.BossAlien;  }  
 
 
       //Score Font Settings + Coords
