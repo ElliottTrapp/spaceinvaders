@@ -1,5 +1,7 @@
-var Game = new function() {    
+var Game = new function() {   
+
 // These are the codes for what key needs to be pressed - can add more for forward etc or change the codes.                                                              
+  
   var KEY_CODES = { 37:'left', 39:'right', 32 :'fire' };
   this.keys = {};
 
@@ -80,7 +82,6 @@ var GameScreen = function GameScreen(text,text2,callback) {
 
 
 var GameBoard = function GameBoard(level_number) {
-  this.score = 0;
   this.removed_objs = [];
   this.missiles = 0;
   this.BossAlien = 0; 
@@ -123,8 +124,17 @@ var GameBoard = function GameBoard(level_number) {
 
 //Randomly Spawning Bonus 'Alien' At top of screen 'Triforce'
 
- 
-  this.step = function(dt) { 
+ this.step = function(dt) { 
+    
+      if(this.BossAlien<1 && Math.random()*1000<1) {
+        var BossAlien=this.addSprite('triforce' , Game.width, 10, { dx: -1, player: this.player });
+        ++this.BossAlien;                                                             
+          
+          // Spawn rare sprite (triforce) occasionally
+          
+          
+      }    
+      
     this.removed_objs = [];
     this.iterate(function() { 
         if(!this.step(dt)) this.die();
@@ -141,6 +151,7 @@ var GameBoard = function GameBoard(level_number) {
     this.iterate(function() { this.draw(canvas); });
   };
 
+//Collision Detection
 
   this.collision = function(o1,o2) {
     return !((o1.y+o1.h-1<o2.y) || (o1.y>o2.y+o2.h-1) ||
@@ -154,11 +165,18 @@ var GameBoard = function GameBoard(level_number) {
     });
   };
 
+
+
+//Load the Level
+
   this.loadLevel = function(level) {
     this.objects = [];
     this.player = this.addSprite('player', // Sprite
                                  Game.width/2, // X
                                  Game.height - Sprites.map['player'].h - 10); // Y
+
+
+
 
     var flock = this.add(new AlienFlock());
     for(var y=0,rows=level.length;y<rows;y++) {
@@ -173,6 +191,8 @@ var GameBoard = function GameBoard(level_number) {
       }
     }
   };
+
+//Can change how many levels to skip once one is completed
 
   this.nextLevel = function() { 
     return Game.level_data[level_number + 1] ? (level_number + 1) : false 
@@ -199,6 +219,8 @@ var GameAudio = new function() {
     audio_channels[a]['finished'] = -1;	
   }
 
+//Load Sound Code
+
   this.load = function(files,callback) {
     var audioCallback = function() { GameAudio.finished(callback); }
 
@@ -220,6 +242,9 @@ var GameAudio = new function() {
     }
   };
 
+
+//Sound code 
+
   this.play = function(s) {
     for (a=0;a<audio_channels.length;a++) {
       thistime = new Date();
@@ -235,11 +260,4 @@ var GameAudio = new function() {
 };
 
 
-///Help from Zak///
-
-
-      //Score Font Settings + Coords
-
-    
-  };
 

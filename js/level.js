@@ -40,7 +40,7 @@
     //Zelda Alien 1 = Octorok
     'alien1': { sx: 0,  sy: 0,  w: 32, h: 30, cls: Alien, frames: 2 },
     //'alien2': { sx: 0,  sy: 22, w: 23, h: 18, cls: Alien, frames: 0 },
-    'triforce': { sx: 65,  sy: 0,  w: 34, h: 30, cls: Alien, frames: 0},
+    'triforce': { sx: 66,  sy: 0,  w: 34, h: 30, cls: BossAlien,frames: 2},
     'player': { sx: 0,  sy: 30, w: 25, h: 37, cls: Player },
     'missile': { sx: 0,  sy: 67, w: 7,  h: 15, cls: Missile },
     'missile2': { sx: 6,  sy: 68, w: 8,  h: 8, cls: Missile },
