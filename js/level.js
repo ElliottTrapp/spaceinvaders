@@ -53,6 +53,7 @@
                                  });
     Game.loadBoard(screen);
     Game.loop();
+    GameAudio.play('start');
   }
 
   function endGame() {
@@ -82,9 +83,10 @@
 
 //This is the function that controls the sounds for firing and kills
 //Could add enemy firing by adding another line of code 'fire2' : 'media/laser2.wav', etc.
+//Added rare spawn sound and death
 
   $(function() {
-    GameAudio.load({ 'fire' : 'media/laser.wav', 'die' : 'media/explosion.wav' }, 
+    GameAudio.load({ 'fire' : 'media/laser.wav', 'die' : 'media/explosion.wav', 'start' : 'media/nes-intro.mp3', 'bossfire' : 'media/hit-triforce.wav' }, 
                    function() { 
                        Game.initialize("#gameboard", levelData, spriteData,
                                       { "start": startGame,
