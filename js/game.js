@@ -184,7 +184,7 @@ BossAlien.prototype.step = function(dt)
  return true; } 
 
 BossAlien.prototype.die = function() {
-    //GameAudio.play('');
+    GameAudio.play('bossfire');
     this.board.remove(this);
     this.player.frame=1;
     
