@@ -55,6 +55,9 @@
     var screen = new GameScreen("Game Over","(press space to restart)",
                                  function() {
                                      Game.loadBoard(new GameBoard(1));
+                                     score = 0;
+                                     document.getElementById('score').innerHTML=" : " + score;
+                                 
                                  });
     Game.loadBoard(screen);
   }

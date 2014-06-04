@@ -69,8 +69,8 @@ var GameScreen = function GameScreen(text,text2,callback) {
 
 
 var GameBoard = function GameBoard(level_number) {
-  this.removed_objs = [];
   this.score = 0;
+  this.removed_objs = [];
   this.missiles = 0;
   this.level = level_number;
   var board = this;
@@ -86,6 +86,17 @@ var GameBoard = function GameBoard(level_number) {
     sprite.h = Sprites.map[name].h;
     return sprite;
   };
+
+
+
+// var scoretext = "Score: " + this.score;
+//     canvas.font="20px arial";
+//     canvas.fillStyle = "#797777";
+//     canvas.fillText(scoretext,10,10);
+//     var measure2 = canvas.measureText(text2);
+
+  
+
   
   //This is a comment so I can practice commit!
 
@@ -227,31 +238,6 @@ var GameAudio = new function() {
 
       //Score Font Settings + Coords
 
-    var scoretext = "Score: " + this.score;
-    canvas.font="20px arial";
-    canvas.fillStyle = "#797777";
-    //canvas.fillText(scoretext,10,10);
-    var measure2 = canvas.measureText(text2);
-    canvas.fillText(text2,Game.width/2 - measure2.width/2,Game.height/2 + 40);
-  
+    
   };
 
-
-// var GameBoard = function GameBoard(level_number) {
-//   this.score = 0;
-//   this.removed_objs = [];
-//   this.missiles = 0;
-//   this.level = level_number;
-//   var board = this;
-
-//   this.add =    function(obj) { obj.board=this; this.objects.push(obj); return obj; };
-//   this.remove = function(obj) { this.removed_objs.push(obj); };
-
-//   this.addSprite = function(name,x,y,opts) {
-//     var sprite = this.add(new Sprites.map[name].cls(opts));
-//     sprite.name = name;
-//     sprite.x = x; sprite.y = y;
-//     sprite.w = Sprites.map[name].w; 
-//     sprite.h = Sprites.map[name].h;
-//     return sprite;
-//   };

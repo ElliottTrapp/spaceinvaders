@@ -1,3 +1,4 @@
+var score = 0;
 
 var AlienFlock = function AlienFlock() {
   this.invulnrable = true;
@@ -54,18 +55,17 @@ Alien.prototype.draw = function(canvas) {
   Sprites.draw(canvas,this.name,this.x,this.y,this.frame);
 }
 
-// Alien.prototype.die = function() {
-//   GameAudio.play('die');
-//   this.flock.speed += 1;
-//   this.board.remove(this);
-// }
 
 //Addition of .score
 Alien.prototype.die = function() {
   GameAudio.play('die');
-  this.flock.speed += 1;
-  this.board.remove(this);
-  this.board.score++;
+  this.flock.speed += 1;                                   // This determines how fast the aliens move once one has been killed
+  this.board.remove(this); 
+        // This functions defines that the alien is then removed upon collision 
+    score = score +1;
+        // Adds 10 to the score
+    document.getElementById('score').innerHTML="  : " + score;
+                        
 }
 
 Alien.prototype.step = function(dt) {
@@ -89,7 +89,7 @@ Alien.prototype.fireSometimes = function() {
       if(Math.random()*100 < 5) {
         this.board.addSprite('missile',this.x + this.w/2 - Sprites.map.missile.w/2,
                                       this.y + this.h, 
-                                     { dy: 100 });
+                                     { dy: 110 });
       }
 }
 
