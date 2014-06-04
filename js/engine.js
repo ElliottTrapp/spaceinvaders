@@ -33,7 +33,7 @@ var Game = new function() {
 
     //Master speed control of game - Higher faster
 
-    Game.board.step(30/1000); 
+    Game.board.step(40/1000); 
 
     Game.board.render(Game.canvas);
     setTimeout(Game.loop,30);
@@ -126,7 +126,7 @@ var GameBoard = function GameBoard(level_number) {
 
  this.step = function(dt) { 
     
-      if(this.BossAlien<1 && Math.random()*1000<1) {
+      if(this.BossAlien<1 && Math.random()*1000<10) {
         var BossAlien=this.addSprite('triforce' , Game.width, 10, { dx: -1, player: this.player });
         ++this.BossAlien;                                                             
           
