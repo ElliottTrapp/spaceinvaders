@@ -1,4 +1,13 @@
-A Simple HTML5 Game To-be used in a Tutorial
+This is a redesign of class alien invaders by Cykod (https://github.com/cykod/AlienInvasion)
 
-Slides up at:
-http://www.slideshare.net/cykod/html5-game-development-introduction-5815787
+I’ve added a rare spawning enemy (treasure) and changed several variables to change the feel of the game. In addition I’ve swapped out the original sprites and given the html page a refurnish, improving aesthetics. My sounds are also revamped.
+
+Images - Reference
+
+gree-rupee.png (http://img4.wikia.nocookie.net/__cb20120501010031/zeldafanon/images/5/57/GreenRupee.png)
+
+game-boy.png (http://www.freevector.com/tag/game-boy/)
+
+sprites.png (Green Person = http://hamumu.com/forum/archive/index.php/t-10395.html)
+
+Game-background.png (http://commons.wikimedia.org/wiki/File:Zelda_Logo.svg)
